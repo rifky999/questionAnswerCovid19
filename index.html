@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>FormWizard_v5</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="author" content="colorlib.com">
+
+		<!-- MATERIAL DESIGN ICONIC FONT -->
+		<link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.css">
+
+		<!-- STYLE CSS -->
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/bt.css">
+
+
+		<link rel="icon" type="image/png" sizes="144x144"
+			href="#">
+		<link rel="apple-touch-icon" type="image/png" sizes="144x144"
+			href="#">
+
+		<meta data-rh="true" property="og:site_name" content="Covid Indonesia">
+		<meta data-rh="true" property="og:locale" content="en_ID">
+		<meta data-rh="true" name="mobile-web-app-capable" content="yes">
+		<meta data-rh="true" name="apple-mobile-web-app-title" content="Covid Indonesia">
+		<meta data-rh="true" name="apple-mobile-web-app-capable" content="yes">
+		<meta data-rh="true" name="apple-mobile-web-app-status-bar-style" content="default">
+		<link data-rh="true" rel="apple-touch-icon" href="#">
+		<link data-rh="true" rel="apple-touch-startup-image" href="#">
+		<link data-rh="true" rel="shortcut icon" href="/img/favicon.ico?v=20140313">
+		<meta name="title"
+			content="Covid 19 - Survey Diri"
+			data-rh="true">
+		<meta name="description"
+			content="Covid 19. Cari tahu seberapa bahayanya diri terhadap covid 19"
+			data-rh="true">
+		<meta property="og:type" content="product" data-rh="true">
+		<meta property="og:title"
+			content="Covid 19 - Survey Diri"
+			data-rh="true">
+		<meta property="og:description"
+			content="Covid 19. Cari tahu seberapa bahayanya diri terhadap covid 19"
+			data-rh="true">
+		<meta property="og:url"
+			content="#"
+			data-rh="true">
+		<meta property="og:image"
+			content="/image"
+			data-rh="true">
+		<meta name="twitter:card" content="product" data-rh="true">
+		<meta name="twitter:site" content="@tokopedia" data-rh="true">
+		<meta name="twitter:creator" content="@tokopedia" data-rh="true">
+		<meta name="twitter:title" content="Covid 19 - Survey Diri" data-rh="true">
+		<meta name="twitter:description"
+			content="Covid 19. Cari tahu seberapa bahayanya diri terhadap covid 19"
+			data-rh="true">
+		<meta name="twitter:image"
+			content="/image"
+			data-rh="true">
+
+		<meta http-equiv="Cache-control" content="no-transform" data-rh="true">
+		<meta name="robots" content="index, follow" data-rh="true">
+	</head>
+	<body>
+
+
+
+
+		<div class="wrapper">
+			
+			<div class="image-holder">
+							<div id="myCarousel" style="" class="carousel slide" data-ride="carousel">
+								<!-- Indicators -->
+								<ol class="carousel-indicators">
+									<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+									<li data-target="#myCarousel" data-slide-to="1"></li>
+									<li data-target="#myCarousel" data-slide-to="2"></li>
+									<li data-target="#myCarousel" data-slide-to="3"></li>
+									<li data-target="#myCarousel" data-slide-to="4"></li>
+									<li data-target="#myCarousel" data-slide-to="5"></li>
+								</ol>
+							
+								<!-- Wrapper for slides -->
+								<div class="carousel-inner">
+									<div class="item active">
+										<img src="images/carou/physicaldistancing.webp" alt="Los Angeles" style="width:100%;">
+									</div>
+									<div class="item">
+										<img src="images/carou/cold.webp" alt="Los Angeles" style="width:100%;">
+									</div>
+									<div class="item">
+										<img src="images/carou/flu.webp" alt="Los Angeles" style="width:100%;">
+									</div>
+									<div class="item">
+										<img src="images/carou/handsanitaizer.webp" alt="Los Angeles" style="width:100%;">
+									</div>
+									<div class="item">
+										<img src="images/carou/masker.webp" alt="Los Angeles" style="width:100%;">
+									</div>
+									<div class="item">
+										<img src="images/carou/washing.webp" alt="Los Angeles" style="width:100%;">
+									</div>
+								</div>
+							
+								<!-- Left and right controls -->
+								<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+									<span class="sr-only">Previous</span>
+								</a>
+								<a class="right carousel-control" href="#myCarousel" data-slide="next">
+									<span class="sr-only">Next</span>
+								</a>
+							</div>
+			</div>
+            <form action="">
+            	<div id="wizard">
+            		<!-- SECTION 1 -->
+	                <h4></h4>
+	                <section>
+						<div class="row">
+							<div class="col-xs-12">
+								<hr> 
+								<h4>Apakah kamu mengalami beberapa gejala seperti ini ?</h4>
+							<div class="row">
+								<div class="col-xs-10" class="pertanyaan">
+									<div class="radio"  onclick="radio(this)">
+										<input class="radioinput" type="checkbox" name='gejalacovidya' value="symptomscovid">
+										<label> 
+											Demam, Panas Dingin, Sakit Tenggorokan, Batuk-batuk, Diare,  Muntah-muntah
+										</label>
+									</div>
+									<div class="radio" onclick="radio(this)">
+										<input class="radioinput" type="checkbox" name='gejalacovidna'>
+										<label>
+											Tidak ada
+										</label>
+									</div>
+								</div>
+							</div>
+						
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12">
+								<h4>Apakah kamu punya salah satu dari kondisi <br> ini ?</h4>
+								<div class="row">
+									<div class="col-xs-10" class="pertanyaan">
+										<div class="radio" onclick="radio(this)">
+											<input class="radioinput" type="checkbox" name='gejalasakitya'  value="commonsick">
+											<label>
+												Asma, Hamil, Diabetes, Gagal
+												ginjal, Liver, Gagal jantung, Obesitas ekstrim, Sistem imun lemah
+											</label>
+										</div>
+										<div class="radio" onclick="radio(this)">
+											<input class="radioinput" type="checkbox" name='gejalasakitna'>
+											<label>
+												Tidak ada
+											</label>
+										</div>
+									</div>
+								</div>
+						
+							</div>
+						</div>
+	
+						
+
+
+					
+						<!-- <div class="form-row">
+							<label for="">
+								Apakah kamu baru saja bepergian ke negara /kota yang terjangkit COVID-19 dalam 2 minggu terakhir ?
+							</label>
+							<input type="radio" name="billing method" value="Direct bank transfer" checked>Iya
+							<input type="radio" name="billing method" value="Direct bank transfer" checked>Tidak
+						</div> -->
+					
+	                </section>
+	                
+					<!-- SECTION 2 -->
+	                <h4></h4>
+	                <section>
+						<div class="row">
+							<div class="col-xs-12">
+								<hr>
+								<h4>Dalam 14 hari terakhir apakah kamu bepergian keluar negeri ?</h4>
+								<div class="row">
+									<div class="col-xs-10" class="pertanyaan">
+										<div class="radio" onclick="radio(this)">
+											<input class="radioinput" type="checkbox" name='luarnegritya' value="traveledinternational">
+											<label>
+												Pergi
+											</label>
+										</div>
+										<div class="radio" onclick="radio(this)">
+											<input class="radioinput" type="checkbox" name='luarnegritna'>
+											<label>
+												Tidak Pergi
+											</label>
+										</div>
+									</div>
+								</div>
+						
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12">
+								<h4>Dalam 14 hari terakhir apakah kamu berada <br>di wilayah penyebaran Covid-19 ?</h4>
+								<div class="row">
+									<div class="col-xs-10" class="pertanyaan">
+										<div class="radio" onclick="radio(this)">
+											<input class="radioinput" type="checkbox" name='wilayah1' value="intheregioncovid">
+											<label>
+												Saya tinggal disini
+											</label>
+										</div>
+										<div class="radio" onclick="radio(this)">
+											<input class="radioinput" type="checkbox" name='wilayah2' value="intheregioncovid">
+											<label>
+												Saya pernah berkunjung kesini
+											</label>
+										</div>
+										<div class="radio" onclick="radio(this)">
+											<input class="radioinput" type="checkbox" name='wilayah3'>
+											<label>
+												Saya tidak tahu
+											</label>
+										</div>
+										<div class="radio" onclick="radio(this)">
+											<input class="radioinput" type="checkbox" name='wilayah4'>
+											<label>
+												Tidak sama sekali
+											</label>
+										</div>
+									</div>
+								</div>
+						
+							</div>
+						</div>
+	                </section>
+<!-- 
+					symptomscovid
+					commonsick
+					traveledinternational
+					intheregioncovid
+					interactioncovid
+					workout -->
+
+	                <!-- SECTION 3 -->
+	                <h4></h4>
+	                <section>
+						<div class="row">
+							<div class="col-xs-12">
+								<h4>Dalam 14 hari terakhir apakah kamu berhubungan dengan orang lain yang diketahui terinfeksi Covid-19 ?</h4>
+								<div class="row">
+									<div class="col-xs-10" class="pertanyaan">
+										<div class="radio" onclick="radio(this)">
+											<input class="radioinput" type="checkbox" name='sosialisasidengancovid2' value="interactioncovid">
+											<label>
+												Saya tinggal dengan orang tersebut
+											</label>
+										</div>
+										<div class="radio" onclick="radio(this)">
+											<input class="radioinput" type="checkbox" name='sosialisasidengancovid1' value="interactioncovid">
+											<label>
+												Saya telah berdekatan dengan orang yang terindikasi Covid-19
+
+											</label>
+										</div>
+										<div class="radio" onclick="radio(this)">
+											<input class="radioinput" type="checkbox" name='sosialisasidengancovid0'>
+											<label>
+												Saya tidak pernah berhubungan langsung
+											</label>
+										</div>
+									</div>
+								</div>
+						
+							</div>
+						</div>
+			</section>
+			
+			
+					<h4></h4>
+	                <section>
+						<div class="row">
+							<div class="col-xs-12">
+								<h4>Apakah anda harus tetap bekerja keluar rumah ?</h4>
+								<div class="row">
+									<div class="col-xs-10" class="pertanyaan">
+										<div class="radio" onclick="radio(this)">
+											<input class="radioinput" type="checkbox" name='sosialisasidengancovid2' value="workout">
+											<label>
+												Saya harus bekerja keluar rumah
+											</label>
+										</div>
+										<div class="radio" onclick="radio(this)">
+											<input class="radioinput" type="checkbox" name='sosialisasidengancovid1'>
+											<label>
+												Saya bekerja di rumah
+											</label>
+										</div>
+										<div class="radio" onclick="radio(this)">
+											<input class="radioinput" type="checkbox" name='sosialisasidengancovid0'>
+											<label>
+												Saya tidak bekerja
+											</label>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+	                </section>
+            	</div>
+            </form>
+		</div>
+		<div  class="container" id="result" style="display: none;margin-top: 30px;margin-bottom: 20px;">
+					
+					
+
+		</div>
+		<div class="container">
+			<iframe src="https://kitabisa.com/campaign/indonesialawancorona"  frameborder="0" style="width:100%;height:450px"></iframe>
+
+		</div>
+
+		<script src="js/jquery-3.3.1.min.js"></script>
+		
+		<!-- JQUERY STEP -->
+		<script src="js/jquery.steps.js"></script>
+
+		<script src="js/main.js"></script>
+		<script src="js/bt.js"></script>
+
+		<script>
+			console.clear();
+		</script>
+<!-- Template created and distributed by Colorlib -->
+</body>
+</html>
