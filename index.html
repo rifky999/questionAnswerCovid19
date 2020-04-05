@@ -70,10 +70,47 @@
 
 			gtag('config', 'UA-93068762-2');
 		</script>
+
+		<script type="text/javascript">
+			(function (i, s, o, g, r, a, m, n) { i.moengage_object = r; t = {}; q = function (f) { return function () { (i.moengage_q = i.moengage_q || []).push({ f: f, a: arguments }) } }; f = ['track_event', 'add_user_attribute', 'add_first_name', 'add_last_name', 'add_email', 'add_mobile', 'add_user_name', 'add_gender', 'add_birthday', 'destroy_session', 'add_unique_user_id', 'moe_events', 'call_web_push', 'track', 'location_type_attribute'], h = { onsite: ["getData"] }; for (k in f) { t[f[k]] = q(f[k]) } a = s.createElement(o); m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m); i.moe = i.moe || function () { n = arguments[0]; return t }; a.onload = function () { if (n) { i[r] = moe(n) } } })(window, document, 'script', 'https://cdn.moengage.com/webpush/moe_webSdk.min.latest.js', 'Moengage')
+
+			Moengage = moe({
+				app_id: "9N75MMIAPC63H1I1KCRYN1S1",
+				debug_logs: 0
+			});
+
+			Moengage.call_web_push({
+					"soft_ask": true,
+					"main_class": "moe-main-class",
+					"allow_class": "moe-allow-class",
+					"block_class": "moe-block-class",
+				});
+		</script>
 	</head>
 	<body>
-
-
+	<!-- Your Custom Soft Ask Div -->
+	<div class="moe-main-class" style="display:none;">
+		<div class="moe-chrome-style-notification moe-chrome-style-notification-safari" data-rapid_height="50">
+			<div class="moe-safari-notification-inner-wrapper">
+				<div class="moe-notification-image-wrapper-safari">
+					<img src="https://www.moengage.com/img/icon-web-push.png"></div>
+				<div class="moe-text-wrapper-safari">
+					<span class="moe-notification-title-safari">Indonesia covid 19 menawarkan untuk menyalakan notifikasi?</span>
+					<p class="moe-notification-message-safari">Notifikasi dapat dimatikan kapan saja di browser.</p>
+				</div>
+				<div style="clear: both;">
+					<div class="moe-modal-branding"><span></div>
+					<div class="moe-button-wrapper">
+						<button class="moe-chrome-style-notification-btn moe-btn-close moe-block-class">Don't Allow</button>
+						<button class="moe-chrome-style-notification-btn moe-btn-allow moe-allow-class">Allow</button>
+					</div>
+					<div style="clear:both"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
 
 
 		<div class="wrapper">

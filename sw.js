@@ -1,6 +1,7 @@
 
+importScripts("https://cdn.moengage.com/webpush/releases/serviceworker_cdn.min.latest.js");
 
-const CACHE_NAME = "covid19-v6";
+const CACHE_NAME = "covid19-v7";
 
 var urlsToCache = [
     "/"
