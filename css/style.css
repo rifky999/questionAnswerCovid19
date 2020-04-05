@@ -131,4 +131,15 @@
 		.moe-notification-image-wrapper-safari img {
 			height: 65px !important;
 			width: 65px !important
-		}
+        }
+        
+        #result {
+                width: 49%;
+        }
+
+        @media only screen and (max-width: 991px) {
+        #result {
+                width: 100%;
+        }
+
+}
