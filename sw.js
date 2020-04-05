@@ -2,7 +2,9 @@
 
 const CACHE_NAME = "covid19-v6";
 
-var urlsToCache = ["css/style.css"
+var urlsToCache = [
+    "/"
+    ,"css/style.css"
     , "css/bt.css"
     , "js/bt.js"
     , "js/jquery-3.3.1.min.js"
