@@ -334,7 +334,22 @@
 		<script src="js/bt.js"></script>
 
 		<script>
-			console.clear();
+			window.addEventListener('load', () => {
+					if (!('serviceWorker' in navigator)) {
+						// service workers not supported 😣
+						return
+					}
+
+					navigator.serviceWorker.register('/sw.js').then(
+						() => {
+							console.error('SW registration!')
+						},
+						err => {
+							console.error('SW registration failed! 😱', err)
+						}
+					)
+				})
+			// console.clear();
 		</script>
 <!-- Template created and distributed by Colorlib -->
 </body>
