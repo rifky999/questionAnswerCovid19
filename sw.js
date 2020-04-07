@@ -3,8 +3,7 @@ importScripts("https://cdn.moengage.com/webpush/releases/serviceworker_cdn.min.l
 const CACHE_NAME = "covid19-v11";
 
 var urlsToCache = [
-    "/"
-    ,"css/style.css"
+    "css/style.css"
     , "css/bt.css"
     , "js/bt.js"
     , "js/jquery-3.3.1.min.js"
