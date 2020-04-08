@@ -114,6 +114,10 @@
 					"block_class": "moe-block-class",
 				});
 		</script>
+
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+			integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+			crossorigin="" />
 	</head>
 	<body>
 	<!-- Your Custom Soft Ask Div -->
@@ -396,9 +400,20 @@
 					</div>
 		</div>
 
+		<div class="container" style="margin-bottom: 200px;">
+			<div style="width: 100%;height: 100px;    border: 1px solid rgb(143, 143, 143); border-radius: .25rem;">
+				<style>
+					#mapid { height: 220px;width: 100%; }
+				</style>
+				<div style="padding: 5px;">
+					Klik profinsi untuk melihat data covid 19
+				</div>
+				<div id="mapid"></div>
+			</div>
+		</div>
+
 		<div class="container">
 			<iframe src="https://kitabisa.com/campaign/indonesialawancorona"  frameborder="0" style="width:100%;height:450px"></iframe>
-
 		</div>
 
 		<script src="js/jquery-3.3.1.min.js"></script>
@@ -408,8 +423,147 @@
 
 		<script src="js/main.js"></script>
 		<script src="js/bt.js"></script>
+		<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+			integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+			crossorigin=""></script>
 
 		<script>
+
+				var mymap = L.map('mapid').setView([-3.316694, 114.590111], 5);
+				L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+						attribution: 'R99',
+						maxZoom: 18,
+						id: 'mapbox/streets-v11',
+						tileSize: 512,
+						zoomOffset: -1,
+						accessToken: 'pk.eyJ1Ijoicmlma3k5OSIsImEiOiJjazhxZTlzaXUwMmVhM21vNzd4Y2dzdHJ5In0.I_sh8jZmI0gZ0jGj0JW6gw'
+					}).addTo(mymap);
+
+
+					L.Control.Watermark = L.Control.extend({
+						onAdd: function(mymap) {
+							var img = L.DomUtil.create('img');
+
+							img.src = 'https://indonesiacovid19.site/images/icons/icon-72x72.png';
+							img.style.width = '25px';
+
+							return img;
+						},
+
+						onRemove: function(map) {
+							// Nothing to do here
+						}
+					});
+
+					L.control.watermark = function(opts) {
+						return new L.Control.Watermark(opts);
+					}
+
+					L.control.watermark({ position: 'bottomleft' }).addTo(mymap);
+
+					
+				var positif = [];
+				var mening = [];
+				var sembuh = [];
+
+				$.ajax({
+					type: "get", url: "https://api.kawalcorona.com/indonesia/provinsi/",
+					success: function (data, text) {
+
+						data.forEach(d => {
+							
+							
+							var title = '';
+
+							switch (d.attributes.Provinsi) {
+								case 'Banten':
+									title = "PROBANTEN";
+									break;
+
+								default:
+									title = d.attributes.Provinsi.toUpperCase();
+									break;
+							}
+
+							 positif[d.attributes.Provinsi.toUpperCase()] = [d.attributes.Kasus_Posi];
+							 mening[d.attributes.Provinsi.toUpperCase()] = [d.attributes.Kasus_Meni];
+							 sembuh[d.attributes.Provinsi.toUpperCase()] = [d.attributes.Kasus_Semb];
+
+						});
+
+					},
+					error: function (request, status, error) {
+						alert(request.responseText);
+					}
+				}).then(() => {
+
+
+					$.ajax({
+						type: "get", url: "https://raw.githubusercontent.com/superpikar/indonesia-geojson/master/indonesia-province.json",
+						success: function (data, text) {
+
+							datas = JSON.parse(data);
+
+							var geojson = L.geoJSON(datas.features, {
+								style: function (feature) {
+
+									var danger  = "#dd2c00";
+									var medium = "#ff5722";
+									var easy = "#f3c623";
+									var aman = "#f2ed6f";
+									
+									if (positif.hasOwnProperty(feature.properties.Propinsi)) {
+									
+										if (positif[feature.properties.Propinsi][0] >= 1000) {
+										  return { color: "#5d5d5d9e", fillColor: danger, fillOpacity: 0.5, weight: 0.5 }
+										}else if(positif[feature.properties.Propinsi][0] >= 500){
+											return { color: "#5d5d5d9e", fillColor: medium, fillOpacity: 0.5, weight: 0.5 }
+										} else if (positif[feature.properties.Propinsi][0] >= 100) {
+											return { color: "#5d5d5d9e", fillColor: easy, fillOpacity: 0.5, weight: 0.5 }
+										} else if (positif[feature.properties.Propinsi][0] >= 25) {
+											return { color: "#5d5d5d9e", fillColor: aman, fillOpacity: 0.5, weight: 0.5 }
+										}else{
+											return { color: "#5d5d5d9e", fillColor: '#4cd3c2', fillOpacity: 0.5, weight: 0.5 }
+										}
+									} else {
+										return { color: "#5d5d5d9e", fillColor: '#4cd3c2', fillOpacity: 0.5, weight: 0.5 }
+									}
+
+								}
+							}).addTo(mymap);
+
+							geojson.eachLayer(function (layer) {
+	
+								HTML = "";
+								if (positif.hasOwnProperty(layer.feature.properties.Propinsi)) {
+									HTML = `<b>` + layer.feature.properties.Propinsi + `<b><br>
+									Positif : `+ positif[layer.feature.properties.Propinsi][0] + `<br>
+									Meninggal : `+ mening[layer.feature.properties.Propinsi][0] + `<br>
+									Sembuh : `+ sembuh[layer.feature.properties.Propinsi][0] + `<br>`;
+									
+								}else{
+									HTML = `<b>` + layer.feature.properties.Propinsi + `<b>`;
+								}
+	
+
+								layer.bindPopup(HTML, { keepInView: true });
+							});
+
+							mymap.fitBounds(geojson.getBounds());
+
+						},
+						error: function (request, status, error) {
+							alert(request.responseText);
+						}
+					});
+
+				});
+
+		
+				
+
+				
+
 			window.addEventListener('load', () => {
 					if (!('serviceWorker' in navigator)) {
 						// service workers not supported 😣
